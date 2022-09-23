@@ -8,7 +8,7 @@ class TreeNode(object):
 # preorder = [3,9,20,15,7], inorder = [9,3,15,20,7]
 # index : The index() method returns the position at the first occurrence of the specified value.
 
-
+# o(n^2)
 def buildTree(self, preorder, inorder):
     if not preorder or not inorder:
         return None
@@ -20,7 +20,7 @@ def buildTree(self, preorder, inorder):
     root.right = self.buildTree(preorder[mid + 1:], inorder[mid + 1:])
     return root
 
-
+# O(n)
 def buildTree(self, preorder, inorder):
 
     def array_to_tree(left, right):
