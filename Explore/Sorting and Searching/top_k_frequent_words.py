@@ -1,34 +1,28 @@
-from collections import defaultdict
-from heapq import heappush, heappop, heappushpop
+from collections import Counter
+from heapq import heappush, heappop
 
 
-class Node:
+class Pair:
     def __init__(self, word, freq):
         self.word = word
         self.freq = freq
-        
-    # overriding the less than operator
-    def __lt__(self, other):
-        if self.freq == other.freq:
-            return self.word > other.word
-        return self.freq < other.freq
+    # overiding the less than operator
+
+    def __lt__(self, p):
+        return self.freq < p.freq or (self.freq == p.freq and self.word > p.word)
 
 
-class Solution:
-    def topKFrequent(self, words, k):
-        mapper = defaultdict(int)
-        for word in words:
-            mapper[word] += 1
+def topKFrequent(words, k):
+    cnt = Counter(words)
+    h = []
+    for word, freq in cnt.items():
+        heappush(h, Pair(word, freq))
+        if len(h) > k:
+            heappop(h)
+    print(h)
+    return [p.word for p in sorted(h, reverse=True)]
 
-        h = list()
-        for word, freq in mapper.items():
-            node = Node(word, freq)
-            if len(h) == k:
-                heappushpop(h, node)
-            else:
-                heappush(h, node)
+words = ["i","love","leetcode","i","love","coding"]
+k = 2
 
-        result = list()
-        while h:
-            result.append(heappop(h).word)
-        return result[::-1]
+print(topKFrequent(words,k))

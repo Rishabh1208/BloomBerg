@@ -1,4 +1,6 @@
-def trap(self, height):
+# 3 approaches 
+# 1st --> O(N^2), 2nd --> O(N) , o(N), 3rd --> o(N)
+def trap(height):
     if not height:
         return 0
 

@@ -4,32 +4,31 @@
 # 2) FindRank()
 # 3) Path compression while finding parent.
 
-def findRedundantConnection(edges):
+def findRedundantConnection(self, edges):
     parent = [i for i in range(len(edges)+1)]
-    rank = [1] * (len(edges)+1)
+    rank = [0] * (len(edges) + 1)
 
-    def find(n):
-        p = parent[n]
-        while p != parent[p]:
-            parent[p] = parent[parent[p]]  # Path compression
-            p = parent[p]
-        return p
+    def find(x):
+        if x != parent[x]:
+            parent[x] = find(parent[x])
+        return parent[x]
 
-    def union(n1, n2):
-        p1, p2 = find(n1), find(n2)
+    def union(u, v):
+        p1, p2 = find(u), find(v)
 
         if p1 == p2:
-            return
+            return True
+
+        if rank[p1] == rank[p2]:
+            parent[p2] = p1
+            rank[p1] += 1
 
         if rank[p1] > rank[p2]:
             parent[p2] = p1
-            rank[p1] += rank[p2]
 
         else:
             parent[p1] = p2
-            rank[p2] += rank[p1]
-        return True
 
-    for n1, n2 in edges:
-        if not union(n1, n2):
-            return [n1, n2]
+    for u, v in edges:
+        if union(u, v):
+            return [u, v]

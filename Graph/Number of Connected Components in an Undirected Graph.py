@@ -14,9 +14,6 @@ class DSU:
         if p1 == p2:
             return
 
-        if self.rank[p2] > self.rank[p1]:
-            pass
-
         elif self.rank[p1] > self.rank[p2]:
             self.parent[p2] = self.parent[p1]
 

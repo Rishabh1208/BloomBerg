@@ -25,3 +25,53 @@
 # car can reach oasis? (Answered dfs with memoization)
 
 # Would really appreciate if someone can share their approach to this problem! (preferrably in Python)
+
+
+from collections import deque
+
+
+def matrix(arr, gas, k):
+    rows = len(arr)
+    cols = len(arr[0])
+    visited = set()
+
+    def bfs(i, j):
+        q = deque()
+        q.append([i, j])
+        steps = 0
+        while q:
+            for i in range(len(q)):
+                x, y = q.popleft()
+
+                if steps > gas:
+                    return False
+                if arr[x][y] == 'o' and steps <= gas:
+                    print("steps", steps)
+                    return True
+
+                directions = [[0, 1], [0, -1], [1, 0], [-1, 0]]
+                for r, c in directions:
+                    rx = x+r
+                    cy = y+c
+                    if rx in range(rows) and cy in range(cols) and (rx, cy) not in visited and arr[rx][cy] != 'r':
+                        if arr[rx][cy] == 'k':
+                            gas += k
+                        q.append([rx, cy])
+                        visited.add((rx, cy))
+            steps += 1
+        return False
+
+    for i in range(rows):
+        for j in range(cols):
+            if arr[i][j] == "c":
+                return bfs(i, j)
+
+
+arr = [[".", ".", ".", "c", "."],
+       [".", ".", ".", ".", "."],
+       [".", ".", ".", ".", "."],
+       [".", ".", "o", ".", "."]]
+
+gas = 5
+k = 2
+print(matrix(arr, gas, k))

@@ -1,32 +1,23 @@
-def graphValidTree(n, edges):
-    preMap = {i: [] for i in range(n)}
-
-    for u, v in edges:
-        preMap[u].append(v)
-        preMap[v].append(u)
-
-    print("preMap", preMap)
-
-    visited = set()
-
-    def dfs(node, prev):
-        if node in visited:
-            return False
-
-        visited.add(node)
-
-        for i in preMap[node]:
-            if i == prev:
-                continue
-            if not dfs(i, node):
-                return False
-
-        return True
-
-    return dfs(0, -1)
-
-
-n = 5
-edges = [[0, 1], [0, 2], [0, 3], [1, 4]]
-
-print(graphValidTree(n, edges))
+# Trapping rain water
+# Design a leaderboard
+# Top K frequent words
+# Knight dialer
+# Kill process
+# No. of ships in a rectangle
+# Evaluate division (currency conversion)
+# Design an ordered stream
+# Design an underground system
+# overlapping interval, merge interval, meeting rooms 2
+# min stack, max stack
+# LRU cache, LFU cache
+# Implement stack using queue, Implement queue using stack, Implement deque
+# valid pallindrome 1 and 2
+# valid parantheses
+# valid BST
+# Matrix block sum
+# Range sum query 2d - immutable
+# Maximum Employees to Be Invited to a Meeting
+# Number of Distinct Substrings in a String
+# Find the Winner of the Circular Game
+# Web Crawler
+# Valid Triangle Number

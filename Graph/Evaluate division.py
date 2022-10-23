@@ -45,7 +45,6 @@ def calcEquation(equations, values, queries):
 
 # BFS
 
-
 def calcEquation(self, equations, values, queries):
 
     graph = {}

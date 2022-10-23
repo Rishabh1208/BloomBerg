@@ -1,4 +1,4 @@
-def floodFill( image, sr, sc, newColor):
+def floodFill(image, sr, sc, newColor):
     r, c = len(image), len(image[0])
     color = image[sr][sc]
 
@@ -12,5 +12,12 @@ def floodFill( image, sr, sc, newColor):
         dfs(i-1, j)
         dfs(i, j+1)
         dfs(i, j-1)
-        dfs(sr, sc)
-        return image
+    dfs(sr, sc)
+    return image
+
+
+image = [[1, 1, 1], [1, 1, 0], [1, 0, 1]]
+sr = 1
+sc = 1
+color = 2
+print(floodFill(image, sr, sc, color))

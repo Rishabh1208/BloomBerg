@@ -8,7 +8,7 @@ def walls_and_gates(rooms):
 
     def addRooms(r, c):
         if (
-            min(r, c) < 0
+            r < 0 or c < 0
             or r == ROWS
             or c == COLS
             or (r, c) in visit
