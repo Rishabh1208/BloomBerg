@@ -5,7 +5,7 @@ class Node:
 
 
 class LRUCache:
-    def __init__(self, capacity: int):
+    def __init__(self, capacity):
         self.cap = capacity
         self.cache = {}  # map key to node
 
@@ -30,7 +30,7 @@ class LRUCache:
             return self.cache[key].val
         return -1
 
-    def put(self, key: int, value: int) -> None:
+    def put(self, key, value):
         if key in self.cache:
             self.remove(self.cache[key])
         self.cache[key] = Node(key, value)

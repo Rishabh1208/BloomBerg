@@ -3,13 +3,18 @@
 # This is Sea's API interface.
 # You should not implement it, or speculate about its implementation
 # """
+
+
+# Optimize time complexity from O(mn) [Before I started coding].
+# Base of the logarithmic time complexity of the code.
+# If call is made 1million times, what changes in the existing algorithm must be implemented to 
+# accomodate this?
+
+# TC: O(log2max(m,n)). S 
+# SC: O(log2max(m,n))
 class Sea(object):
     def hasShips(self, topRight, bottomLeft):
-        """
-        :type topRight: Point
-                  :type bottomLeft: Point
-        :rtype bool
-        """
+        pass
 
 
 class Point(object):

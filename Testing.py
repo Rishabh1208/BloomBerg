@@ -16,8 +16,3 @@
 # valid BST
 # Matrix block sum
 # Range sum query 2d - immutable
-# Maximum Employees to Be Invited to a Meeting
-# Number of Distinct Substrings in a String
-# Find the Winner of the Circular Game
-# Web Crawler
-# Valid Triangle Number

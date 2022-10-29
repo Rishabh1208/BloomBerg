@@ -44,11 +44,13 @@ class Solution(object):
 
 # O(NlogN)
 # Definition for a binary tree node.
+
 class TreeNode:
     def __init__(self, x):
         self.val = x
         self.left = None
         self.right = None
+
 
 class Solution:
     def verticalOrder(self, root: TreeNode):
@@ -67,6 +69,11 @@ class Solution:
         return [columnTable[x] for x in sorted(columnTable.keys())]
 
 # o(N)
+
+# Binary tree vertical order traversal
+# LC 314
+
+# https://leetcode.com/discuss/interview-question/983874/Bloomberg-or-Phone-interview-or-New-Grad
 def verticalOrder(root):
     if root is None:
         return []
@@ -87,3 +94,31 @@ def verticalOrder(root):
             queue.append((node.right, column + 1))
 
     return [columnTable[x] for x in range(min_column, max_column + 1)]
+
+# This is vertical order traversal of BT [ The only diff between above and this is here if row and col
+# are same, then we have to sort it.]
+# LC 987
+
+
+def verticalTraversal(root):
+    if not root:
+        return []
+
+    q = deque([(root, 0, 0)])
+    preMap = defaultdict(list)
+    min_col = max_col = 0
+
+    while q:
+        node, row, column = q.popleft()
+
+        if node:
+            preMap[column].append((row, node.val))
+            min_col = min(min_col, column)
+            max_col = max(max_col, column)
+            q.append((node.left, row+1, column-1))
+            q.append((node.right, row+1, column+1))
+
+    result = []
+    for i in range(min_col, max_col+1):
+        result.append(node for row, node in sorted(preMap[i]))
+    return result

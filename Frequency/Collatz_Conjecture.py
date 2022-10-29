@@ -1,4 +1,5 @@
-# The Collatz Conjecture says if you take a positive integer N and repeatedly set either N=N/2 (if it's even) or N=3N+1 (if it's odd),
+# The Collatz Conjecture says if you take a positive integer N and repeatedly set either N=N/2
+# (if it's even) or N=3N+1 (if it's odd),
 # N will eventually be 1.
 # 5 -> 16 -> 8 -> 4 -> 2 -> 1 (5 steps).
 # Given N, how many steps does it take to reach 1?
@@ -36,35 +37,25 @@ def collatz(num):
 
 # Recursive solution with memoization
 
-def collatz(num):
+
+def collatz(n):
+
     memo = {1: 0}
 
-    def dfs(num, memo):
-        if memo[num]:
-            return memo[num]
+    def dfs(n):
+        if n in memo:
+            return memo[n]
 
-        if num % 2 == 0:
-            steps = 1 + dfs(num//2)
+        if n % 2 == 1:
+            result = 1 + collatz(3*n+1)
 
         else:
-            steps = 1 + dfs(num*3 + 1)
+            result = 1 + collatz(n//2)
 
-        memo[num] = steps
-        return steps
-    return dfs(num, memo)
+        memo[n] = result
+        return memo[n]
+    return dfs(n)
 
-
-def collatz(num, memo={1: 0}):
-    if num in memo:
-        return memo[num]
-
-    if num % 2:
-        res = 1 + collatz(3*num + 1, memo)
-    else:
-        res = 1 + collatz(num//2, memo)
-
-    memo[num] = res
-    return res
 
 # Basic recursion approach
 # private static int transformNum2(int num) {
