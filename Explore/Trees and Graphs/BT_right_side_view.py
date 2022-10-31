@@ -1,33 +1,22 @@
-import collections
-# Right side view of BT
+from collections import deque
 
+def rightSideView(self, root):  # same as level order traversal
+    result = []
+    q = deque()
+    if root:
+        q.append(root)
 
-def rightSide(root):
-    # if root is None
-    if root is None:
-        return []
-
-    res = []
-    # maintainung queue
-    q = collections.queue()
-    # appending root to the queue
-    q.append(root)
-
-    # Till queue is empty
     while q:
-        rightSide = None
-
-        # iterating till the length of the queue.
+        node = None
         for i in range(len(q)):
-            # poping the first element of the queue.
             node = q.popleft()
 
-            # There might be chances that node in the queue could be null.
-            if node:
-                rightSide = node
+            if node.left:
                 q.append(node.left)
+
+            if node.right:
                 q.append(node.right)
-        # again there migth be chances rightside is None because we initally initialize it to None. and there might be chances inside the for Loop we could pass if node:
-        if rightSide:
-            res.append(rightSide.val)
-    return res
+
+        if node:
+            result.append(node.val)
+    return result

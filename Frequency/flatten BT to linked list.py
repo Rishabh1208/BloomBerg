@@ -1,8 +1,4 @@
 
-
-from turtle import right
-
-
 def flatten(self, root):
 
     def dfs(root):
@@ -12,7 +8,7 @@ def flatten(self, root):
         leftTail = dfs(root.left)
         rightTail = dfs(root.right)
 
-        if root.left:
+        if root.left:  # we only care about leftTail
             leftTail.right = root.right
             root.right = root.left
             root.left = None
@@ -21,8 +17,8 @@ def flatten(self, root):
         return tail
     dfs(root)
 
-
-def flatten(self, root):
+# SC: O(1) Morris Traversal
+def flatten(root):
 
     # Handle the null scenario
     if not root:

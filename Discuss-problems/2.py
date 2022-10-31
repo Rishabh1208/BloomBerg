@@ -1,4 +1,5 @@
-# Target Sum : Given an array of non negative numbers and a target integer return TRUE if you can
+# Target Sum : Given an array of non negative numbers and a target integer return 
+# TRUE if you can
 # generate the number from the arrray using any subset of the array.
 
 def targetSum(arr, target):

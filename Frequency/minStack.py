@@ -1,33 +1,50 @@
 
+# using two stacks
 class MinStack:
+    def __init__(self):
+        self.stack = []
+        self.minStack = []
+
+    def push(self, val: int) -> None:
+        self.stack.append(val)
+        val = min(val, self.minStack[-1] if self.minStack else val)
+        self.minStack.append(val)
+
+    def pop(self) -> None:
+        self.stack.pop()
+        self.minStack.pop()
+
+    def top(self) -> int:
+        return self.stack[-1]
+
+    def getMin(self) -> int:
+        return self.minStack[-1]
+
+# using one stack , storing tuple (x, minValue)
+class MinStack(object):
 
     def __init__(self):
         self.stack = []
-        self.min_stack = []
 
-    def push(self, x):
-        self.stack.append(x)
-        if not self.min_stack or x < self.min_stack[-1][0]:
-            self.min_stack.append([x, 1])
-
-        elif x == self.min_stack[-1][0]:
-            self.min_stack[-1][1] += 1
+    def push(self, val):
+        minValue = self.getMin()
+        if minValue == None or val < minValue:
+            minValue = val
+        self.stack.append((val, minValue))
 
     def pop(self):
-
-        if self.min_stack[-1][0] == self.stack[-1]:
-            self.min_stack[-1][1] -= 1
-
-        if self.min_stack[-1][1] == 0:
-            self.min_stack.pop()
-
-        self.stack.pop()
+        if self.stack:
+            return self.stack.pop()
 
     def top(self):
-        return self.stack[-1]
+        if self.stack:
+            return self.stack[-1][0]
 
     def getMin(self):
-        return self.min_stack[-1][0]
+        if self.stack:
+            return self.stack[-1][1]
+
+#  using linked list
 
 
 class ListNode:

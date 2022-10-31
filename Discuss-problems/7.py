@@ -26,12 +26,14 @@ def PathToTarget(grid):
 
         path.append((x, y))
 
-        if x >= rows-1 and y >= cols-1:
+        if x == rows-1 and y == cols-1:
             result.append(path[:])
             return
 
         dfs(path, x+1, y)  # down
         dfs(path, x, y+1)  # right
+
+        path.pop()
 
     dfs([], 0, 0)
     return result if len(result) > 0 else "No Paths"

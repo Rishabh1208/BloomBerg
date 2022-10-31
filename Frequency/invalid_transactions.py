@@ -24,8 +24,8 @@ def invalidTransactions(transactions):
         for time in range(time-60, time+61):
             if (time, name) not in transaction_map:
                 continue
-            sus_transaction = transaction_map[(time, name)]
-            print(sus_transaction)
+            sus_transaction = transaction_map[(time, name)] # set of multiple values
+            print("1",city, sus_transaction)
 
             # check to see if there is another transaction from a diff city if so its invalid
             if city in sus_transaction:
@@ -41,5 +41,5 @@ def invalidTransactions(transactions):
     return invalid
 
 
-transactions = ["alice,20,800,mtv", "alice,50,100,beijing"]
+transactions = ["alice,20,800,mtv", "alice,20,100,beijing"]
 invalidTransactions(transactions)

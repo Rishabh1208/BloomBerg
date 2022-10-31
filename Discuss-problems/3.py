@@ -15,18 +15,18 @@
 
 # https://leetcode.com/discuss/interview-question/1629220/Bloomberg-Phone-Interview ( same question )
 
-def findProcessNodeBloomBerg(nodes):
-    indegree = [0] * len(nodes)
-    for key, value in nodes.items():
-        for val in value:
-            indegree[val-1] += 1
-    for idx, val in enumerate(indegree):
-        if val == 0:
-            return idx + 1
+# def findProcessNodeBloomBerg(nodes):
+#     indegree = [0] * len(nodes)
+#     for key, value in nodes.items():
+#         for val in value:
+#             indegree[val-1] += 1
+#     for idx, val in enumerate(indegree):
+#         if val == 0:
+#             return idx + 1
 
 
-nodes = {5: [], 1: [2, 3], 4: [], 3: [6], 6: [], 2: [4, 5]}
-print(findProcessNodeBloomBerg(nodes))
+# nodes = {5: [], 1: [2, 3], 4: [], 3: [6], 6: [], 2: [4, 5]}
+# print(findProcessNodeBloomBerg(nodes))
 
 
 def find_root_process(processes) -> int:

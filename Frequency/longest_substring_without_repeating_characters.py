@@ -2,11 +2,9 @@ def lengthOfLongestSubstring(self, s):
 
     # sliding window technique
     chars = {}
-    longStr = {}
-
     left = right = 0
-
     res = 0
+
     while right < len(s):
         r = s[right]
         chars[r] = chars.get(r, 0) + 1
@@ -20,3 +18,19 @@ def lengthOfLongestSubstring(self, s):
 
         right += 1
     return res
+
+
+def lengthOfLongestSubstring(self, s: str) -> int:
+    n = len(s)
+    ans = 0
+    mp = {}
+
+    i = 0
+    for j in range(n):
+        if s[j] in mp:
+            i = max(mp[s[j]], i) # why we are using i try this example: a,b,b,a
+
+        ans = max(ans, j - i + 1)
+        mp[s[j]] = j + 1
+
+    return ans

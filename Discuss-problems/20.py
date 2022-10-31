@@ -22,6 +22,8 @@ def encode(s):
         else:
             ret.append(alpha_index[s[i]])
             i += 1
+            
+    print(s,ret)
     if i < len(s):
         ret.append(alpha_index[s[len(s)-1]])
     return tuple(ret)

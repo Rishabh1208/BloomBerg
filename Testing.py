@@ -1,18 +1,29 @@
-# Trapping rain water
-# Design a leaderboard
-# Top K frequent words
-# Knight dialer
-# Kill process
-# No. of ships in a rectangle
-# Evaluate division (currency conversion)
-# Design an ordered stream
-# Design an underground system
-# overlapping interval, merge interval, meeting rooms 2
-# min stack, max stack
-# LRU cache, LFU cache
-# Implement stack using queue, Implement queue using stack, Implement deque
-# valid pallindrome 1 and 2
-# valid parantheses
-# valid BST
-# Matrix block sum
-# Range sum query 2d - immutable
+from collections import Counter
+from heapq import heappush, heappop
+
+
+# class Pair:
+#     def __init__(self, word, freq):
+#         self.word = word
+#         self.freq = freq
+#     # overiding the less than operator
+
+#     def __lt__(self, p):
+#         return self.freq < p.freq or (self.freq == p.freq and self.word > p.word)
+
+
+def topKFrequent(words, k):
+    cnt = Counter(words)
+    print("cnt",cnt)
+    h = []
+    for word, freq in cnt.items():
+        heappush(h, (freq, word))
+        if len(h) > k:
+            heappop(h)
+    print("h",h)
+    # return [p.word for p in sorted(h, reverse=True)]
+
+words = ["i","love","leetcode","i","love","coding"]
+k = 3
+
+print(topKFrequent(words,k))
