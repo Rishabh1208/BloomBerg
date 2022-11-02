@@ -7,7 +7,7 @@ def trap(height):
     l, r = 0, len(height) - 1
     leftMax, rightMax = height[l], height[r]
     res = 0
-    while l < r:
+    while l <= r:
         if leftMax < rightMax:
             leftMax = max(leftMax, height[l])
             res += leftMax - height[l]

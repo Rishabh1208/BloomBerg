@@ -69,6 +69,9 @@ def numberOfIslands(grid):
     cols = len(grid[0])  # column length
 
     def bfs(grid, queue):
+        queue.append((r, c))
+        grid[r][c] = "0"
+        
         while queue:
             r, c = queue.popleft()
             directions = [[-1, 0], [1, 0], [0, -1], [0, 1]]
@@ -84,8 +87,6 @@ def numberOfIslands(grid):
     for r in range(rows):
         for c in range(cols):
             if grid[r][c] == "1":
-                queue.append((r, c))
-                grid[r][c] = "0"
                 bfs(grid, queue)
                 count += 1
 

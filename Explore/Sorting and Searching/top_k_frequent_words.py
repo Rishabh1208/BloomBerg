@@ -23,44 +23,28 @@ class Item(object):
         return self.freq < other.freq
 
 # MAIN CLASS
-
-
-class Solution(object):
+class Solution:
     def topKFrequent(self, words, k):
-
-        # edge cases
-        if not words or not k:
-            return []
-        elif len(words) == 1:
-            return [words[0]]
-
-        # create map
-        dic = defaultdict(lambda: 0)
+        mapper = defaultdict(int)
         for word in words:
-            dic[word] += 1
+            mapper[word] += 1
 
-        # min heap
-        min_heap = []
-        heapify(min_heap)
-        for word, freq in dic.items():
-            item = Item(word, freq)
+        h = list()
+        for word, freq in mapper.items():
+            node = Item(word, freq)
+            heappush(h, node)
 
-            if(len(min_heap) < k):  # if we still have capacity
-                heappush(min_heap, item)  # normal push
+            if len(h) > k:
+                heappop(h)
 
-                # else
-            elif(item > min_heap[0]):  # if item is greater than the min item in heap
-                heappop(min_heap)  # remove it
-                heappush(min_heap, item)  # push the new item
-        result = []
-
-        while(min_heap):  # pop all elements from our heap and push in 'result' array
-            result.append(heappop(min_heap).word)
-
-            # return reversed result as our FINAL RESULT since we need most frequent first
+        result = list()
+        while h:
+            result.append(heappop(h).word)
         return result[::-1]
 
 # bucket sort for frequency and if same frequency then Trie for traversing lexographically.
+
+
 class Solution:
     def topKFrequent(self, words: List[str], k: int) -> List[str]:
         n = len(words)
