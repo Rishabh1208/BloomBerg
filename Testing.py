@@ -1,29 +1,47 @@
-from collections import Counter
-from heapq import heappush, heappop
+def sol(op):
+
+    obstacles = []
+    res = ""
+    for i in op:
+        if len(i) == 2:
+            obstacles.append(i[1])
+        else:
+            flag = 1
+
+            for ob in obstacles:
+                if i[1] <= ob and ob <= i[1]+i[2]-1:
+                    res += "0"
+                    flag = 0
+                    break
+            if flag:
+                res += "1"
+    return res
 
 
-# class Pair:
-#     def __init__(self, word, freq):
-#         self.word = word
-#         self.freq = freq
-#     # overiding the less than operator
-
-#     def __lt__(self, p):
-#         return self.freq < p.freq or (self.freq == p.freq and self.word > p.word)
-
-
-def topKFrequent(words, k):
-    cnt = Counter(words)
-    print("cnt",cnt)
-    h = []
-    for word, freq in cnt.items():
-        heappush(h, (freq, word))
-        if len(h) > k:
-            heappop(h)
-    print("h",h)
-    # return [p.word for p in sorted(h, reverse=True)]
-
-words = ["i","love","leetcode","i","love","coding"]
-k = 3
-
-print(topKFrequent(words,k))
+# op = [[1, 2], [1, 5], [2, 3, 2], [2, 3, 3], [2, 1, 1], [2, 1, 2]]
+op = [[1, -2],
+              [1, -13],
+              [1, 13],
+              [2, -12, 7],
+              [2, 1, 24],
+              [1, 33],
+              [2, 14, 3],
+              [1, -6],
+              [1, 49],
+              [2, 35, 4],
+              [1, 41],
+              [1, 34],
+              [1, -18],
+              [2, -18, 45],
+              [2, -31, 30],
+              [2, -7, 55],
+              [2, 36, 3],
+              [2, 6, 6],
+              [2, -201, 29],
+              [2, 42, 5],
+              [2, -173, 79],
+              [2, 23, 5],
+              [2, -17, 48],
+              [2, -11, 5],
+              [1, -42]]
+print(sol(op))
