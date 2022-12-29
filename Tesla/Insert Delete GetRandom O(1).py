@@ -1,5 +1,6 @@
 from random import choice
 
+
 class RandomizedSet():
     def __init__(self):
         self.numMap = {}
@@ -11,7 +12,7 @@ class RandomizedSet():
         self.numMap[val] = len(self.numList)
         self.numList.append(val)
         return True
-       
+
     def remove(self, val):
         if val not in self.numMap:
             return False
@@ -22,6 +23,6 @@ class RandomizedSet():
         self.numMap[value] = idx
         del self.numMap[val]
         return True
-       
+
     def getRandom(self):
         return choice(self.numList)

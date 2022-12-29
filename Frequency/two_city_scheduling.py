@@ -11,7 +11,7 @@ def twoCitySchedCost(costs):
     total = 0
 
     for i in range(len(diff)):
-        if i < diff//2:
+        if i < len(diff)//2:
             total += diff[i][2]
         else:
             total += diff[i][1]
