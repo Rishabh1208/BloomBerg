@@ -1,4 +1,4 @@
-def longestPalindrome(self, s):
+def longestPalindrome(s):
     # Helper function to check
     def helper(s, l, r):
         while l >= 0 and r < len(s) and s[l] == s[r]:
@@ -19,3 +19,8 @@ def longestPalindrome(self, s):
             res = temp
 
     return res
+
+
+s = "babad"
+
+print(longestPalindrome(s))

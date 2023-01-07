@@ -19,3 +19,6 @@ def minCost(colors, neededTime):
 
     # Return total_time as the minimum removal time.
     return total_time
+
+colors = "abaaac"
+neededTime = [1,2,4,3,5,6]

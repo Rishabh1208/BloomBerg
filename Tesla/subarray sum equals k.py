@@ -1,4 +1,4 @@
-def subarraySum(self, nums, k):
+def subarraySum(nums, k):
     freq = {}
     count = 0
     ksum = 0

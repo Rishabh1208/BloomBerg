@@ -1,7 +1,8 @@
+from collections import Counter
 import heapq
 
 
-def topKFrequent(self, nums, k):
+def topKFrequent(nums, k):
     res = []
     mp = {}
     # This is Heap solution, Better solution should be bucket sort
@@ -18,3 +19,17 @@ def topKFrequent(self, nums, k):
             heapq.heappushpop(res, [value, key])
 
     return [key for value, key in res]
+
+
+def topKFrequent(nums, k):
+    freq = Counter(nums)
+    arr = [[] for i in range(len(nums)+1)]
+    res = []
+    for key, value in freq.items():
+        arr[value].append(key)
+    for i in range(len(arr)-1, 0, -1):
+        if arr[i]:
+            for ele in arr[i]:
+                res.append(ele)
+                if len(res) == k:
+                    return res

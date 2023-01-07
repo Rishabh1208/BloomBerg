@@ -9,3 +9,7 @@ def maxValue(n, x):
             idx += 1
     ans = n[:idx] + str(x) + n[idx:]
     return ans
+
+
+n = "99"
+x = 9

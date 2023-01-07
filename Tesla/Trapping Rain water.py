@@ -1,4 +1,4 @@
-def trap(self, height):
+def trap(height):
     if not height:
         return 0
 

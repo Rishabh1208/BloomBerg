@@ -1,6 +1,7 @@
-def multiply(self, num1, num2):
+def multiply(num1, num2):
     if "0" in [num1, num2]:
         return "0"
+    
     res = [0] * (len(num1)+len(num2))
     num1 = num1[::-1]
     num2 = num2[::-1]
@@ -16,3 +17,7 @@ def multiply(self, num1, num2):
         z += 1
     res = map(str, res[z:])
     return "".join(res)
+
+
+num1 = "123"
+num2 = "456"
